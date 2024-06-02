@@ -5,8 +5,8 @@ const PORT = process.env.PORT || 3000;
 
 // Define your redirects
 const redirects = {
-    '/r/example1': 'https://example1.com',
-    '/r/example2': 'https://example2.com',
+    '/r/docs': 'https://robskan.gitbook.io/robskan.com/',
+    '/r/ntts': 'https://discord.gg/ntts',
     // Add more redirects as needed
 };
 
