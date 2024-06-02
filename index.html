@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">SillySite</title>
+    <style>
+        body {
+            background-color: black;
+            color: #8C76F3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            text-align: center;
+        }
+        #name {
+            font-size: 100px;
+            word-wrap: break-word;
+        }
+        .badge {
+            display: inline-flex;
+            margin: 0 5px;
+            position: relative;
+            cursor: pointer;
+        }
+        .tooltip {
+            visibility: hidden;
+            background-color: #23272A;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the icon */
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 200px;
+            white-space: nowrap;
+        }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%; /* Arrow at the bottom of tooltip */
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: #23272A transparent transparent transparent;
+        }
+        .badge:hover .tooltip {
+            visibility: visible;
+        }
+        #badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px; /* Adjust this value to control the space */
+        }
+        #disallowed {
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1 id="name">Loading...</h1>
+        <div id="badges">
+            <div id="verified" class="badge" style="display:none;">
+                <a href="https://discord.gg/yQwdYzDj6d" target="_blank"><img src="/public/img/verified.png" alt="Verified Icon" width="50" height="50"></a>
+                <span class="tooltip">Verified Silly</span>
+            </div>
+            <div id="sillyLeader" class="badge" style="display:none;">
+                <img src="/public/img/moderator.png" alt="Silly Leader Icon" width="50" height="50">
+                <span class="tooltip">Silly Leader</span>
+            </div>
+            <div id="wrench" class="badge" style="display:none;">
+                <img src="/public/img/wrench.png" alt="Owner Icon" width="50" height="50">
+                <span class="tooltip">Manager</span>
+            </div>
+            <div id="banned" class="badge" style="display:none;">
+                <img src="/public/img/banned.png" alt="Banned Icon" width="50" height="50">
+                <span class="tooltip">Removed: Abuse</span>
+            </div>
+            <div id="partner" class="badge" style="display:none;">
+                <img src="/public/img/partner.png" alt="Partnered Icon" width="50" height="50">
+                <span class="tooltip">Partnered</span>
+            </div>
+            <div id="vip" class="badge" style="display:none;">
+                <img src="/public/img/vip.png" alt="VIP Icon" width="50" height="50">
+                <span class="tooltip">VIP</span>
+            </div>
+            <div id="bughunter" class="badge" style="display:none;">
+                <img src="/public/img/bughunter.png" alt="Bug Hunter Icon" width="50" height="50">
+                <span class="tooltip">Bug Hunter</span>
+            </div>
+            <div id="premium" class="badge" style="display:none;">
+                <img src="/public/img/premium.png" alt="Premium Icon" width="50" height="50">
+                <span class="tooltip">Premium User</span>
+            </div>
+            <div id="omegasilly" class="badge" style="display:none;">
+                <img src="/public/img/omegasilly.png" alt="Omega Silly Icon" width="50" height="50">
+                <span class="tooltip">Omega Silly</span>
+            </div>
+            <div id="ntts_staff" class="badge" style="display:none;">
+                <a href="https://discord.gg/ntts" target="_blank"><img src="/public/img/ntts.png" alt="NTTS Staff Icon" width="50" height="50"></a>
+                <span class="tooltip">NTTS Staff</span>
+            </div>
+            <div id="link" class="badge" style="display:none;">
+                <a href="https://wbr.life/about" target="_blank"><img src="/public/img/link.png" alt="Link Icon" width="50" height="50"></a>
+                <span class="tooltip">About Robbie</span>
+            </div>
+        <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
+    </div>
+    
+    <script>
+        // List of disallowed domains
+        const disallowedDomains = ['nigger', 'nig', 'faggot', 'tranny', 'fag', 'fagg', 'nigga', 'niga', 'negro']; // Pages that return red text
+        
+        // BADGE CONFIG
+        const approvedUsers = ['795', 'mint', 'energized', 'immfi', 'salem', 'mero', 'goblin', 'jinx']; // Pages with ✅ badge
+        const partnerNames = ['goblin']; // Pages with partner badge
+        
+        const bannedNames = ['']; // Pages with 🚫 badge
+        
+        const vipNames = ['goblin']; // Pages with VIP badge
+        const leaderNames = ['robbie', 'goblin'];
+        const wrenchNames = ['goblin'];
+        const bugHunters = ['goblin'];
+        const premiumUsers = ['goblin'];
+        const omegaSillyPeople = ['sem', 'semdepem', 'sem_de_pem', 'goblin'];
+        const nttsStaff = ['immfi', 'mero', 'robbie', 'vaso', 'suicine', 'mead', 'sem', 'lav', 'lavernie', 'alex', 'alexpalexsmalex', 'fishy', 'tb1', 'tarab1te', 'eric', 'austin', 'ccet', 'leguchi', 'maya', 'lotus', 'militarylotus', 'taz', 'tazhys', 'blank', 'akjr', 'bek', 'cheese', 'ductho3', 'duct', 'kodi', 'fae', 'falcon', 'falconator', 'kaylculus', 'kayl', 'ace', 'jenku', 'wesley'];
+        const link = ['robbie'];
+        
+        // Extract the NAME from the URL path and decode it
+        const pathSegments = window.location.pathname.split('/').filter(segment => segment);
+        let name = '???';
+        if (pathSegments.length > 0) {
+            name = decodeURIComponent(pathSegments[0].replace(/%20/g, ' '));
+        }
+
+        // Set the NAME in the HTML content
+        const nameElement = document.getElementById('name');
+        const badgesElement = document.getElementById('badges');
+        const disallowedElement = document.getElementById('disallowed');
+        const verifiedBadge = document.getElementById('verified');
+
+        // STAFF BADGES
+        const sillyLeaderBadge = document.getElementById('sillyLeader');
+        const wrenchBadge = document.getElementById('wrench');
+
+        // BANNED BADGE
+        const bannedBadge = document.getElementById('banned');
+
+        // SPECIAL BADGES
+        const partnerBadge = document.getElementById('partner');
+        const vipBadge = document.getElementById('vip');
+        const hunterBadge = document.getElementById('bughunter');
+        const premiumBadge = document.getElementById('premium');
+        const omegaSillyBadge = document.getElementById('omegasilly');
+
+        const linkBadge = document.getElementById('link');
+
+        // SUPER SPECIAL BADGES
+        const nttsStaffBadge = document.getElementById('ntts_staff');
+
+        // Set the name in the name element
+        nameElement.textContent = name;
+        
+        // Check if the name is in the disallowed list
+        if (disallowedDomains.includes(name.toLowerCase())) {
+            document.getElementById('title').textContent = '404?!?!?';
+            nameElement.style.display = 'none';
+            badgesElement.style.display = 'none';
+            disallowedElement.style.display = 'block';
+        } else {
+            document.getElementById('title').textContent = `${name} - SillySite`;
+
+            // Show Verified silly badge if the name is in the approved list
+            if (approvedUsers.includes(name.toLowerCase())) {
+                verifiedBadge.style.display = 'inline-flex';
+            }
+
+            if (leaderNames.includes(name.toLowerCase())) {
+                sillyLeaderBadge.style.display = 'inline-flex';
+            }
+
+            // Show Silly Leader badge if the name is 'robbie'
+            if (partnerNames.includes(name.toLowerCase())) {
+                partnerBadge.style.display = 'inline-flex';
+            }
+
+            if (vipNames.includes(name.toLowerCase())) {
+                vipBadge.style.display = 'inline-flex';
+            }
+
+            if (wrenchNames.includes(name.toLowerCase())) {
+                wrenchBadge.style.display = 'inline-flex';
+            }
+
+            if (bugHunters.includes(name.toLowerCase())) {
+                hunterBadge.style.display = 'inline-flex';
+            }
+
+            if (premiumUsers.includes(name.toLowerCase())) {
+                premiumBadge.style.display = 'inline-flex';
+            }
+
+            if (omegaSillyPeople.includes(name.toLowerCase())) {
+                omegaSillyBadge.style.display = 'inline-flex';
+            }
+
+            if (nttsStaff.includes(name.toLowerCase())) {
+                nttsStaffBadge.style.display = 'inline-flex';
+            }
+
+            if (link.includes(name.toLowerCase())) {
+                linkBadge.style.display = 'inline-flex';
+            }
+
+            
+            // Check if the name is in the banned list
+            if (bannedNames.includes(name.toLowerCase())) {
+                // Show only the banned badge
+                verifiedBadge.style.display = 'none';
+                sillyLeaderBadge.style.display = 'none';
+                wrenchBadge.style.display = 'none';
+                partnerBadge.style.display = 'none';
+                vipBadge.style.display = 'none';
+                hunterBadge.style.display = 'none';
+                premiumBadge.style.display = 'none';
+                omegaSillyBadge.style.display = 'none';
+                nttsStaffBadge.style.display = 'none';
+                
+                bannedBadge.style.display = 'inline-flex';
+
+                
+            } else {
+                // Show other badges if not banned
+                if (partnerNames.includes(name.toLowerCase())) {
+                    partnerBadge.style.display = 'inline-flex';
+                }
+                if (vipNames.includes(name.toLowerCase())) {
+                    vipBadge.style.display = 'inline-flex';
+                }
+            }
+
+            // Check if the text width exceeds the screen width
+            window.onload = () => {
+                if (nameElement.scrollWidth > document.documentElement.clientWidth) {
+                    nameElement.textContent = '😵‍💫😵 Too long!';
+                }
+            };
+        }
+    </script>
+</body>
+</html>
