@@ -105,7 +105,7 @@
         const staffMembers = ['robbie'];
 
         // SPECIAL BADGES
-        const friends = [''];
+        const friends = ['fae', 'jinx', 'maya', 'vaso', 'mero', 'daro', 'mint', 'reggie', 'pingu'];
         
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
@@ -146,12 +146,6 @@
             // Show Partner badge if the name is in the approved list
             if (friends.includes(name.toLowerCase())) {
                 partnerBadge.style.display = 'inline-flex';
-            }
-
-            // Check if the name is in the banned list
-            if (banned.includes(name.toLowerCase())) {
-                // Hide other badges
-                partnerBadge.style.display = 'none';
             }
 
             if (banned.includes(name.toLowerCase())) {
