@@ -16,38 +16,39 @@ const discordWebhookURL = 'https://discord.com/api/webhooks/1246878907894861929/
 
 // Middleware to log all requests and send to Discord
 app.use((req, res, next) => {
-    const requestPath = req.path.toLowerCase();  // Change variable name to avoid conflict with 'path' module
+    const requestPath = req.path.toLowerCase();
     
     // Prepare the payload for the webhook
     const payload = {
         content: `Page visited: ${requestPath}`
     };
 
-    // Send the webhook request
-    axios.post(discordWebhookURL, payload)
-        .then(response => {
+    // Log the payload
+    console.log('Payload:', payload);
+
+    // Function to send the webhook request with retries
+    const sendWebhook = async (retries = 3) => {
+        try {
+            const response = await axios.post(discordWebhookURL, payload);
             console.log('Webhook sent successfully:', response.data);
-        })
-        .catch(error => {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.error('Error response from Discord:', error.response.data);
-            } else if (error.request) {
-                // The request was made but no response was received
-                console.error('No response received from Discord:', error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.error('Error setting up webhook request:', error.message);
+        } catch (error) {
+            console.error('Error sending webhook:', error.response ? error.response.data : error.message);
+            if (retries > 0) {
+                console.log(`Retrying... Attempts left: ${retries}`);
+                setTimeout(() => sendWebhook(retries - 1), 1000); // Retry after 1 second
             }
-        });
-    
+        }
+    };
+
+    // Send the webhook
+    sendWebhook();
+
     next();
 });
 
 // Middleware to handle redirects for /r/ paths
 app.use((req, res, next) => {
-    const requestPath = req.path.toLowerCase();  // Change variable name to avoid conflict with 'path' module
+    const requestPath = req.path.toLowerCase();
     if (requestPath.startsWith('/r/')) {
         const redirectTo = redirects[requestPath];
         if (redirectTo) {
