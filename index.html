@@ -81,10 +81,10 @@
                 <span class="tooltip">Staff Member</span>
             </div>
 
-        <!-- PARTNER BADGE -->
-            <div id="partner" class="badge" style="display:none;">
-                <img src="/public/img/partner.png" alt="Silly Leader Icon" width="50" height="50">
-                <span class="tooltip">Partner</span>
+        <!-- FRIEND BADGE -->
+            <div id="friend" class="badge" style="display:none;">
+                <img src="/public/img/friend.png" alt="Silly Leader Icon" width="50" height="50">
+                <span class="tooltip">Friend</span>
             </div>
 
         <!-- LOCKED BADGE -->
@@ -105,7 +105,7 @@
         const staffMembers = ['robbie'];
 
         // SPECIAL BADGES
-        const partners = ['robbie'];
+        const friends = [''];
         
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
@@ -124,7 +124,7 @@
 
         // STAFF BADGES
         const staffBadge = document.getElementById('staff');
-        const partnerBadge = document.getElementById('partner'); 
+        const friendsBadge = document.getElementById('friends'); 
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -144,7 +144,7 @@
             }
 
             // Show Partner badge if the name is in the approved list
-            if (partners.includes(name.toLowerCase())) {
+            if (friends.includes(name.toLowerCase())) {
                 partnerBadge.style.display = 'inline-flex';
             }
 
