@@ -86,6 +86,12 @@
                 <img src="/public/img/friend.png" alt="Silly Leader Icon" width="50" height="50">
                 <span class="tooltip">Friend</span>
             </div>
+
+        <!-- SILLY BADGE -->
+            <div id="silly" class="badge" style="display:none;">
+                <img src="/public/img/silly.png" alt="Silly Leader Icon" width="50" height="50">
+                <span class="tooltip">4'1 Gay Furry Femboi Silly</span>
+            </div>
         </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
     </div>
@@ -99,6 +105,7 @@
 
         // SPECIAL BADGES
         const friends = ['fae', 'jinx', 'maya', 'vaso', 'mero', 'daro', 'mint', 'reggie', 'pingu'];
+        const sillies = ['sem'];
         
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
@@ -118,6 +125,7 @@
         // STAFF BADGES
         const staffBadge = document.getElementById('staff');
         const friendsBadge = document.getElementById('friends'); 
+        const sillyBadge = document.getElementById('silly');
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -139,6 +147,10 @@
             // Show Partner badge if the name is in the approved list
             if (friends.includes(name.toLowerCase())) {
                 partnerBadge.style.display = 'inline-flex';
+            }
+
+            if (sillies.includes(name.toLowerCase())) {
+                sillyBadge.style.display = 'inline-flex';
             }
 
         // Check if the text width exceeds the screen width
