@@ -68,26 +68,32 @@
             color: red;
             font-size: 30px;
         }
+        #avatar {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="content">
-        <h1 id="name">Loading...</h1>
+        <div style="display: flex; align-items: center;">
+            <img id="avatar" src="" alt="Avatar" width="100" height="100" style="display:none;">
+            <h1 id="name">Loading...</h1>
+        </div>
         <div id="badges">
-
-        <!-- STAFF BADGE -->
+            <!-- STAFF BADGE -->
             <div id="staff" class="badge" style="display:none;">
                 <img src="/public/img/staff.png" alt="Staff Icon" width="50" height="50">
                 <span class="tooltip">Staff Member</span>
             </div>
 
-        <!-- FRIEND BADGE -->
+            <!-- FRIEND BADGE -->
             <div id="friend" class="badge" style="display:none;">
                 <img src="/public/img/friend.png" alt="Friend Badge" width="50" height="50">
                 <span class="tooltip">Friend</span>
             </div>
 
-        <!-- SILLY BADGE -->
+            <!-- SILLY BADGE -->
             <div id="silly" class="badge" style="display:none;">
                 <img src="/public/img/silly.png" alt="Silly Icon BLEHHH" width="50" height="50">
                 <span class="tooltip">4'1 Gay Furry Femboi Silly</span>
@@ -107,6 +113,14 @@
         const friends = ['fae', 'jinx', 'maya', 'vaso', 'mero', 'daro', 'mint', 'reggie', 'pingu'];
         const sillies = ['sem'];
         
+        // Avatar URLs
+        const avatars = {
+            'robbie': '/public/img/avatars/robbie.png',
+            'fae': '/public/img/avatars/fae.png',
+            'jinx': '/public/img/avatars/jinx.png',
+            // Add more avatars here
+        };
+
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
         let name = '???';
@@ -118,6 +132,7 @@
         const nameElement = document.getElementById('name');
         const badgesElement = document.getElementById('badges');
         const disallowedElement = document.getElementById('disallowed');
+        const avatarElement = document.getElementById('avatar');
 
         // STAFF BADGES
         const staffBadge = document.getElementById('staff');
@@ -148,6 +163,12 @@
 
             if (sillies.includes(name.toLowerCase())) {
                 sillyBadge.style.display = 'inline-flex';
+            }
+
+            // Show avatar if available
+            if (avatars[name.toLowerCase()]) {
+                avatarElement.src = avatars[name.toLowerCase()];
+                avatarElement.style.display = 'block';
             }
         }
 
