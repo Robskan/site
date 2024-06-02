@@ -74,49 +74,13 @@
     <div id="content">
         <h1 id="name">Loading...</h1>
         <div id="badges">
-            <div id="verified" class="badge" style="display:none;">
-                <a href="https://discord.gg/yQwdYzDj6d" target="_blank"><img src="/public/img/verified.png" alt="Verified Icon" width="50" height="50"></a>
-                <span class="tooltip">Verified Silly</span>
-            </div>
-            <div id="sillyLeader" class="badge" style="display:none;">
-                <img src="/public/img/moderator.png" alt="Silly Leader Icon" width="50" height="50">
-                <span class="tooltip">Silly Leader</span>
-            </div>
-            <div id="wrench" class="badge" style="display:none;">
-                <img src="/public/img/wrench.png" alt="Owner Icon" width="50" height="50">
-                <span class="tooltip">Manager</span>
-            </div>
-            <div id="banned" class="badge" style="display:none;">
-                <img src="/public/img/banned.png" alt="Banned Icon" width="50" height="50">
-                <span class="tooltip">Removed: Abuse</span>
+            <div id="staff" class="badge" style="display:none;">
+                <img src="/public/img/staff.png" alt="Verified Icon" width="50" height="50">
+                <span class="tooltip">Staff Member</span>
             </div>
             <div id="partner" class="badge" style="display:none;">
-                <img src="/public/img/partner.png" alt="Partnered Icon" width="50" height="50">
-                <span class="tooltip">Partnered</span>
-            </div>
-            <div id="vip" class="badge" style="display:none;">
-                <img src="/public/img/vip.png" alt="VIP Icon" width="50" height="50">
-                <span class="tooltip">VIP</span>
-            </div>
-            <div id="bughunter" class="badge" style="display:none;">
-                <img src="/public/img/bughunter.png" alt="Bug Hunter Icon" width="50" height="50">
-                <span class="tooltip">Bug Hunter</span>
-            </div>
-            <div id="premium" class="badge" style="display:none;">
-                <img src="/public/img/premium.png" alt="Premium Icon" width="50" height="50">
-                <span class="tooltip">Premium User</span>
-            </div>
-            <div id="omegasilly" class="badge" style="display:none;">
-                <img src="/public/img/omegasilly.png" alt="Omega Silly Icon" width="50" height="50">
-                <span class="tooltip">Omega Silly</span>
-            </div>
-            <div id="ntts_staff" class="badge" style="display:none;">
-                <a href="https://discord.gg/ntts" target="_blank"><img src="/public/img/ntts.png" alt="NTTS Staff Icon" width="50" height="50"></a>
-                <span class="tooltip">NTTS Staff</span>
-            </div>
-            <div id="link" class="badge" style="display:none;">
-                <a href="https://wbr.life/about" target="_blank"><img src="/public/img/link.png" alt="Link Icon" width="50" height="50"></a>
-                <span class="tooltip">About Robbie</span>
+                <img src="/public/img/partner.png" alt="Silly Leader Icon" width="50" height="50">
+                <span class="tooltip">Partner</span>
             </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
     </div>
@@ -131,14 +95,8 @@
         
         const bannedNames = ['']; // Pages with 🚫 badge
         
-        const vipNames = ['goblin']; // Pages with VIP badge
-        const leaderNames = ['robbie', 'goblin'];
-        const wrenchNames = ['goblin'];
-        const bugHunters = ['goblin'];
-        const premiumUsers = ['goblin'];
-        const omegaSillyPeople = ['sem', 'semdepem', 'sem_de_pem', 'goblin'];
-        const nttsStaff = ['immfi', 'mero', 'robbie', 'vaso', 'suicine', 'mead', 'sem', 'lav', 'lavernie', 'alex', 'alexpalexsmalex', 'fishy', 'tb1', 'tarab1te', 'eric', 'austin', 'ccet', 'leguchi', 'maya', 'lotus', 'militarylotus', 'taz', 'tazhys', 'blank', 'akjr', 'bek', 'cheese', 'ductho3', 'duct', 'kodi', 'fae', 'falcon', 'falconator', 'kaylculus', 'kayl', 'ace', 'jenku', 'wesley'];
-        const link = ['robbie'];
+        const staffMembers = ['robbie']; // Pages with VIP badge
+        
         
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
