@@ -82,6 +82,7 @@
                 <img src="/public/img/partner.png" alt="Silly Leader Icon" width="50" height="50">
                 <span class="tooltip">Partner</span>
             </div>
+        </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
     </div>
     
@@ -109,8 +110,8 @@
         const disallowedElement = document.getElementById('disallowed');
 
         // STAFF BADGES
-        const staffBadge = document.getElementByID('staff');
-        const partnerBadge = document.getElementByID('partner'); 
+        const staffBadge = document.getElementById('staff');
+        const partnerBadge = document.getElementById('partner'); 
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -129,32 +130,24 @@
                 staffBadge.style.display = 'inline-flex';
             }
 
-            
+            // Show Partner badge if the name is in the approved list
+            if (partners.includes(name.toLowerCase())) {
+                partnerBadge.style.display = 'inline-flex';
+            }
+
             // Check if the name is in the banned list
             if (banned.includes(name.toLowerCase())) {
-                // Show only the banned badge
+                // Hide other badges
                 partnerBadge.style.display = 'none';
-                bannedBadge.style.display = 'inline-flex';
-
-
             }
-            // } else {
-            //     // Show other badges if not banned
-            //     if (partnerNames.includes(name.toLowerCase())) {
-            //         partnerBadge.style.display = 'inline-flex';
-            //     }
-            //     if (vipNames.includes(name.toLowerCase())) {
-            //         .style.display = 'inline-flex';
-            //     }
-            // }
-
-            // Check if the text width exceeds the screen width
-            window.onload = () => {
-                if (nameElement.scrollWidth > document.documentElement.clientWidth) {
-                    nameElement.textContent = '😵‍💫😵 Too long!';
-                }
-            };
         }
+
+        // Check if the text width exceeds the screen width
+        window.onload = () => {
+            if (nameElement.scrollWidth > document.documentElement.clientWidth) {
+                nameElement.textContent = '😵‍💫😵 Too long!';
+            }
+        };
     </script>
 </body>
 </html>
