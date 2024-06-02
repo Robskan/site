@@ -98,8 +98,8 @@
     
     <script>
         // List of disallowed domains
-        const disallowedDomains = ['example1', 'example2', 'example3']; // Replace with sanitized words
-        const banned = ['']; // Pages with 🚫 badge
+        const disallowedDomains = ['bannedpage']; // Replace with sanitized words
+        const banned = ['banned']; // Pages with 🚫 badge
 
         // STAFF BADGES
         const staffMembers = ['robbie'];
@@ -136,7 +136,7 @@
             badgesElement.style.display = 'none';
             disallowedElement.style.display = 'block';
         } else {
-            document.getElementById('title').textContent = `${name} - SillySite`;
+            document.getElementById('title').textContent = `${name} - Robskan.com`;
 
             // Show Verified silly badge if the name is in the approved list
             if (staffMembers.includes(name.toLowerCase())) {
