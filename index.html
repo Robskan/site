@@ -119,12 +119,9 @@
         const badgesElement = document.getElementById('badges');
         const disallowedElement = document.getElementById('disallowed');
 
-        // BANNED
-        const bannedBadge = document.getElementById('locked');
-
         // STAFF BADGES
         const staffBadge = document.getElementById('staff');
-        const friendsBadge = document.getElementById('friends'); 
+        const friendBadge = document.getElementById('friend'); 
         const sillyBadge = document.getElementById('silly');
 
         // Set the name in the name element
@@ -137,7 +134,7 @@
             badgesElement.style.display = 'none';
             disallowedElement.style.display = 'block';
         } else {
-            document.getElementById('title').textContent = `${name} - Robskan.com`;
+            document.getElementById('title').textContent = `${name} - SillySite`;
 
             // Show Verified silly badge if the name is in the approved list
             if (staffMembers.includes(name.toLowerCase())) {
@@ -146,12 +143,13 @@
 
             // Show Partner badge if the name is in the approved list
             if (friends.includes(name.toLowerCase())) {
-                partnerBadge.style.display = 'inline-flex';
+                friendBadge.style.display = 'inline-flex';
             }
 
             if (sillies.includes(name.toLowerCase())) {
                 sillyBadge.style.display = 'inline-flex';
             }
+        }
 
         // Check if the text width exceeds the screen width
         window.onload = () => {
