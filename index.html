@@ -86,12 +86,6 @@
                 <img src="/public/img/friend.png" alt="Silly Leader Icon" width="50" height="50">
                 <span class="tooltip">Friend</span>
             </div>
-
-        <!-- LOCKED BADGE -->
-            <div id="locked" class="badge" style="display:none;">
-                <img src="/public/img/locked.png" alt="Silly Leader Icon" width="50" height="50">
-                <span class="tooltip">Locked: Abuse</span>
-            </div>
         </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
     </div>
@@ -99,7 +93,6 @@
     <script>
         // List of disallowed domains
         const disallowedDomains = ['bannedpage']; // Replace with sanitized words
-        const banned = ['banned']; // Pages with 🚫 badge
 
         // STAFF BADGES
         const staffMembers = ['robbie'];
@@ -147,12 +140,6 @@
             if (friends.includes(name.toLowerCase())) {
                 partnerBadge.style.display = 'inline-flex';
             }
-
-            if (banned.includes(name.toLowerCase())) {
-                bannedBadge.style.display ='inline-flex';
-                disallowedElement.style.display = 'block';
-            }
-        }
 
         // Check if the text width exceeds the screen width
         window.onload = () => {
