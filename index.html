@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title">SillySite</title>
     <style>
+        #badgeContainer {
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Adjust this value to control the space */
+    border: 2px solid #8C76F3; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding around the badges */
+}
         body {
             background-color: black;
             color: #8C76F3;
@@ -84,6 +93,7 @@
             <h1 id="name">Loading...</h1>
         </div>
         <div id="badges">
+            <div id="badgeContainer">
             <!-- STAFF BADGE -->
             <div id="staff" class="badge" style="display:none;">
                 <img src="/public/img/staff.png" alt="Staff Icon" width="50" height="50">
@@ -102,6 +112,7 @@
                 <span class="tooltip">4'1 Gay Furry Femboi Silly</span>
             </div>
         </div>
+    </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
     </div>
     
