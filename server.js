@@ -1,11 +1,6 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-// Load environment variables from .env file
-dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,8 +11,8 @@ const redirects = {
     // Add more redirects as needed
 };
 
-// Get the Discord webhook URL from environment variables
-const discordWebhookURL = process.env.DISCORD_WEBHOOK_URL;
+// Discord webhook URL
+const discordWebhookURL = 'https://discord.com/api/webhooks/1246878907894861929/laQIVR5taSn3PomULkupTyEfBPDIHigYryZmAY-pKo7qQiTEY36GkM6TrnFN09z0FciO';
 
 // Middleware to log all requests and send to Discord
 app.use((req, res, next) => {
