@@ -98,6 +98,12 @@
                 <img src="/public/img/silly.png" alt="Silly Icon BLEHHH" width="50" height="50">
                 <span class="tooltip">4'1 Gay Furry Femboi Silly</span>
             </div>
+
+            <!-- BETA BADGE -->
+            <div id="beta" class="badge" style="display:none;">
+                <img src="/public/img/beta.png" alt="BETA Icon" width="50" height="50">
+                <span class="tooltip">BETA</span>
+            </div>
         </div>
     </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
@@ -113,6 +119,7 @@
         // SPECIAL BADGES
         const friends = ['fae', 'jinx', 'maya', 'vaso', 'mero', 'daro', 'mint', 'reggie', 'pingu', 'sem'];
         const sillies = ['sem'];
+        // const beta = ['robbie', 'fae', 'sem'];
         
         // Avatar URLs
         const avatars = {
@@ -139,6 +146,7 @@
         const staffBadge = document.getElementById('staff');
         const friendBadge = document.getElementById('friend'); 
         const sillyBadge = document.getElementById('silly');
+        const betaBadge = document.getElementById('beta');
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -170,6 +178,7 @@
             if (avatars[name.toLowerCase()]) {
                 avatarElement.src = avatars[name.toLowerCase()];
                 avatarElement.style.display = 'block';
+                betaBadge.style.display = 'inline-flex';
             }
         }
 
