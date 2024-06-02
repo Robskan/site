@@ -88,15 +88,13 @@
     <script>
         // List of disallowed domains
         const disallowedDomains = ['nigger', 'nig', 'faggot', 'tranny', 'fag', 'fagg', 'nigga', 'niga', 'negro']; // Pages that return red text
-        
-        // BADGE CONFIG
-        const approvedUsers = ['795', 'mint', 'energized', 'immfi', 'salem', 'mero', 'goblin', 'jinx']; // Pages with ✅ badge
-        const partnerNames = ['goblin']; // Pages with partner badge
-        
-        const bannedNames = ['']; // Pages with 🚫 badge
-        
-        const staffMembers = ['robbie']; // Pages with VIP badge
-        
+        const banned = ['']; // Pages with 🚫 badge
+
+        // STAFF BADGES
+        const staffMembers = ['robbie'];
+
+        // SPECIAL BADGES
+        const partners = ['robbie'];
         
         // Extract the NAME from the URL path and decode it
         const pathSegments = window.location.pathname.split('/').filter(segment => segment);
@@ -109,26 +107,10 @@
         const nameElement = document.getElementById('name');
         const badgesElement = document.getElementById('badges');
         const disallowedElement = document.getElementById('disallowed');
-        const verifiedBadge = document.getElementById('verified');
 
         // STAFF BADGES
-        const sillyLeaderBadge = document.getElementById('sillyLeader');
-        const wrenchBadge = document.getElementById('wrench');
-
-        // BANNED BADGE
-        const bannedBadge = document.getElementById('banned');
-
-        // SPECIAL BADGES
-        const partnerBadge = document.getElementById('partner');
-        const vipBadge = document.getElementById('vip');
-        const hunterBadge = document.getElementById('bughunter');
-        const premiumBadge = document.getElementById('premium');
-        const omegaSillyBadge = document.getElementById('omegasilly');
-
-        const linkBadge = document.getElementById('link');
-
-        // SUPER SPECIAL BADGES
-        const nttsStaffBadge = document.getElementById('ntts_staff');
+        const staffBadge = document.getElementByID('staff');
+        const partnerBadge = document.getElementByID('partner'); 
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -143,73 +125,28 @@
             document.getElementById('title').textContent = `${name} - SillySite`;
 
             // Show Verified silly badge if the name is in the approved list
-            if (approvedUsers.includes(name.toLowerCase())) {
-                verifiedBadge.style.display = 'inline-flex';
-            }
-
-            if (leaderNames.includes(name.toLowerCase())) {
-                sillyLeaderBadge.style.display = 'inline-flex';
-            }
-
-            // Show Silly Leader badge if the name is 'robbie'
-            if (partnerNames.includes(name.toLowerCase())) {
-                partnerBadge.style.display = 'inline-flex';
-            }
-
-            if (vipNames.includes(name.toLowerCase())) {
-                vipBadge.style.display = 'inline-flex';
-            }
-
-            if (wrenchNames.includes(name.toLowerCase())) {
-                wrenchBadge.style.display = 'inline-flex';
-            }
-
-            if (bugHunters.includes(name.toLowerCase())) {
-                hunterBadge.style.display = 'inline-flex';
-            }
-
-            if (premiumUsers.includes(name.toLowerCase())) {
-                premiumBadge.style.display = 'inline-flex';
-            }
-
-            if (omegaSillyPeople.includes(name.toLowerCase())) {
-                omegaSillyBadge.style.display = 'inline-flex';
-            }
-
-            if (nttsStaff.includes(name.toLowerCase())) {
-                nttsStaffBadge.style.display = 'inline-flex';
-            }
-
-            if (link.includes(name.toLowerCase())) {
-                linkBadge.style.display = 'inline-flex';
+            if (staffMembers.includes(name.toLowerCase())) {
+                staffBadge.style.display = 'inline-flex';
             }
 
             
             // Check if the name is in the banned list
-            if (bannedNames.includes(name.toLowerCase())) {
+            if (banned.includes(name.toLowerCase())) {
                 // Show only the banned badge
-                verifiedBadge.style.display = 'none';
-                sillyLeaderBadge.style.display = 'none';
-                wrenchBadge.style.display = 'none';
                 partnerBadge.style.display = 'none';
-                vipBadge.style.display = 'none';
-                hunterBadge.style.display = 'none';
-                premiumBadge.style.display = 'none';
-                omegaSillyBadge.style.display = 'none';
-                nttsStaffBadge.style.display = 'none';
-                
                 bannedBadge.style.display = 'inline-flex';
 
-                
-            } else {
-                // Show other badges if not banned
-                if (partnerNames.includes(name.toLowerCase())) {
-                    partnerBadge.style.display = 'inline-flex';
-                }
-                if (vipNames.includes(name.toLowerCase())) {
-                    vipBadge.style.display = 'inline-flex';
-                }
+
             }
+            // } else {
+            //     // Show other badges if not banned
+            //     if (partnerNames.includes(name.toLowerCase())) {
+            //         partnerBadge.style.display = 'inline-flex';
+            //     }
+            //     if (vipNames.includes(name.toLowerCase())) {
+            //         .style.display = 'inline-flex';
+            //     }
+            // }
 
             // Check if the text width exceeds the screen width
             window.onload = () => {
