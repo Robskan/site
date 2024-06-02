@@ -81,6 +81,13 @@
             <h1 id="name">Loading...</h1>
         </div>
         <div id="badges">
+
+            <!-- VERIFIED BADGE -->
+            <div id="check" class="badge" style="display:none;">
+                <img src="/public/img/check.png" alt="Staff Icon" width="50" height="50">
+                <span class="tooltip">Verified Silly Goober</span>
+            </div>
+
             <!-- STAFF BADGE -->
             <div id="staff" class="badge" style="display:none;">
                 <img src="/public/img/staff.png" alt="Staff Icon" width="50" height="50">
@@ -120,6 +127,7 @@
         // SPECIAL BADGES
         const friends = ['fae', 'jinx', 'maya', 'vaso', 'mero', 'daro', 'mint', 'reggie', 'pingu', 'sem'];
         const sillies = ['sem'];
+        const goobers = ['robbie'];
         // const beta = ['robbie', 'fae', 'sem'];
         
         // Avatar URLs
@@ -150,6 +158,7 @@
         const friendBadge = document.getElementById('friend'); 
         const sillyBadge = document.getElementById('silly');
         const betaBadge = document.getElementById('beta');
+        const checkBadge = document.getElementById('check');
 
         // Set the name in the name element
         nameElement.textContent = name;
@@ -166,6 +175,10 @@
             // Show Verified silly badge if the name is in the approved list
             if (staffMembers.includes(name.toLowerCase())) {
                 staffBadge.style.display = 'inline-flex';
+            }
+
+            if (goobers.includes(name.toLowerCase())) {
+                checkBadge.style.display = 'inline-flex';
             }
 
             // Show Partner badge if the name is in the approved list
