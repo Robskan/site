@@ -154,7 +154,7 @@
                 partnerBadge.style.display = 'none';
             }
 
-            if (disallowedDomains.includes(name.toLowerCase())) {
+            if (banned.includes(name.toLowerCase())) {
                 document.getElementById('title').textContent = '404?!?!?';
                 nameElement.style.display = 'none';
                 badgesElement.style.display = 'none';
