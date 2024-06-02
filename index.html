@@ -74,13 +74,23 @@
     <div id="content">
         <h1 id="name">Loading...</h1>
         <div id="badges">
+
+        <!-- STAFF BADGE -->
             <div id="staff" class="badge" style="display:none;">
                 <img src="/public/img/staff.png" alt="Verified Icon" width="50" height="50">
                 <span class="tooltip">Staff Member</span>
             </div>
+
+        <!-- PARTNER BADGE -->
             <div id="partner" class="badge" style="display:none;">
                 <img src="/public/img/partner.png" alt="Silly Leader Icon" width="50" height="50">
                 <span class="tooltip">Partner</span>
+            </div>
+
+        <!-- LOCKED BADGE -->
+            <div id="locked" class="badge" style="display:none;">
+                <img src="/public/img/locked.png" alt="Silly Leader Icon" width="50" height="50">
+                <span class="tooltip">Locked: Abuse</span>
             </div>
         </div>
         <p id="disallowed" style="display:none;">Uh- you aren't looking for this page, right?!?!?</p>
@@ -108,6 +118,9 @@
         const nameElement = document.getElementById('name');
         const badgesElement = document.getElementById('badges');
         const disallowedElement = document.getElementById('disallowed');
+
+        // BANNED
+        const bannedBadge = document.getElementById('locked');
 
         // STAFF BADGES
         const staffBadge = document.getElementById('staff');
@@ -139,6 +152,14 @@
             if (banned.includes(name.toLowerCase())) {
                 // Hide other badges
                 partnerBadge.style.display = 'none';
+            }
+
+            if (disallowedDomains.includes(name.toLowerCase())) {
+                document.getElementById('title').textContent = '404?!?!?';
+                nameElement.style.display = 'none';
+                badgesElement.style.display = 'none';
+                bannedBadge.style.display ='inline-flex';
+                disallowedElement.style.display = 'block';
             }
         }
 
